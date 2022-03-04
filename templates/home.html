@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>In-Vehicle Coupon Recommendation</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
+<link rel="stylesheet" href="css/my_style.css"/>
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<div class="jumbotron jumbotron-fluid" style="height:280vh;">
+<h1 align='center' class="display-4">Fill the form for prediction</h1>
+
+<form align='center' action="{{url_for('prediction')}}" method="POST">
+
+
+<label for="destination">Choose a destination:</label>
+<select id="destination" name="destination">
+  <option value="Work">Work</option>
+  <option value="No Urgent Place">No Urgent Place</option>
+  <option value="Home">Home</option>
+</select>
+
+<br>
+<br>
+
+<label for="passanger">Choose a passenger:</label>
+<select id="passanger" name="passanger">
+  <option value="Alone">Alone</option>
+  <option value="Friend(s)">Friend(s)</option>
+  <option value="Kid(s)">Kid(s)</option>
+  <option value="Partner">Partner</option>
+</select>
+
+<br>
+<br>
+
+
+<label for="weather">Choose a weather:</label>
+<select id="weather" name="weather">
+  <option value="Snowy">Snowy</option>
+  <option value="Sunny">Sunny</option>
+  <option value="Rainy">Rainy</option>
+</select>
+
+<br>
+<br>
+
+
+<label for="temperature">Choose a temperature:</label>
+<select id="temperature" name="temperature">
+  <option value="Medium">Medium</option>
+  <option value="High">High</option>
+  <option value="Low">Low</option>
+</select>
+
+<br>
+<br>
+
+
+<label for="time">Choose a time:</label>
+<select id="time" name="time">
+  <option value="Morning">Morning</option>
+  <option value="Evening">Evening</option>
+  <option value="Night">Night</option>
+</select>
+
+<br>
+<br>
+
+
+<label for="coupon">Choose a Coupon Type:</label>
+<select id="coupon" name="coupon">
+  <option value="Carry out & Take away">Carry out & Take away</option>
+  <option value="Restaurant(<20)">Restaurant(<20)</option>
+  <option value="Bar">Bar</option>
+  <option value="Coffee House">Coffee House</option>
+  <option value="Restaurant(20-50)">Restaurant(20-50)</option>
+</select>
+
+<br>
+<br>
+
+
+<label for="expiration">Choose time due expiration:</label>
+<select id="expiration" name="expiration">
+  <option value="24h">24h</option>
+  <option value="2h">2h</option>
+</select>
+
+
+<br>
+<br>
+
+<label for="gender">Choose a gender:</label>
+<select id="gender" name="gender">
+  <option value="Female">Female</option>
+  <option value="Male">Male</option>
+</select>
+
+
+<br>
+<br>
+
+<label for="age">Choose an age value (nearest to your age):</label>
+<select id="age" name="age">
+  <option value="below21">below21</option>
+  <option value="50plus">50plus</option>
+  <option value="46">46</option>
+  <option value="26">26</option>
+  <option value="21">21</option>
+  <option value="41">41</option>
+  <option value="31">31</option>
+  <option value="36">36</option>
+</select>
+
+<br>
+<br>
+
+
+<label for="maritalStatus">Choose your Marital Status:</label>
+<select id="maritalStatus" name="maritalStatus">
+  <option value="Unmarried partner">Unmarried partner</option>
+  <option value="Widowed">Widowed</option>
+  <option value="Single">Single</option>
+  <option value="Married partner">Married partner</option>
+  <option value="Divorced">Divorced</option>
+</select>
+
+
+<br>
+<br>
+
+<label for="has_children">Do you have children:</label>
+<select id="has_children" name="has_children">
+  <option value="0">No</option>
+  <option value="1">Yes</option>
+</select>
+
+
+<br>
+<br>
+
+<label for="education">Choose your education:</label>
+<select id="education" name="education">
+  <option value="Some college - no degree">Some college - no degree</option>
+  <option value="High School Graduate">High School Graduate</option>
+  <option value="Bachelors degree">Bachelors degree</option>
+  <option value="Graduate degree (Masters or Doctorate)">Graduate degree (Masters or Doctorate)</option>
+  <option value="Associates degree">Associates degree</option>
+  <option value="Some High School">Some High School</option>
+</select>
+
+
+<br>
+<br>
+
+<label for="occupation">Choose an occupation:</label>
+<select id="occupation" name="occupation">
+  <option value="Student">Student</option>
+  <option value="Retired">Retired</option>
+  <option value="Arts Design Entertainment Sports & Media">Arts Design Entertainment Sports & Media</option>
+  <option value="Education&Training&Library">Education&Training&Library</option>
+  <option value="Sales & Related">Sales & Related</option>
+  <option value="Management">Management</option>
+  <option value="Personal Care & Service">Personal Care & Service</option>
+  <option value="Unemployed">Unemployed</option>
+  <option value="Office & Administrative Support">Office & Administrative Support</option>
+  <option value="Healthcare Practitioners & Technical">Healthcare Practitioners & Technical</option>
+  <option value="Construction & Extraction">Construction & Extraction</option>
+  <option value="Building & Grounds Cleaning & Maintenance">Building & Grounds Cleaning & Maintenance</option>
+  <option value="Installation Maintenance & Repair">Installation Maintenance & Repair</option>
+  <option value="Computer & Mathematical">Computer & Mathematical</option>
+  <option value="Community & Social Services">Community & Social Services</option>
+  <option value="Life Physical Social Science">Life Physical Social Science</option>
+  <option value="Business & Financial">Business & Financial</option>
+  <option value="Legal">Legal</option>
+  <option value="Food Preparation & Serving Related">Food Preparation & Serving Related</option>
+  <option value="Production Occupations">Production Occupations</option>
+  <option value="Farming Fishing & Forestry">Farming Fishing & Forestry</option>
+  <option value="Healthcare Support">Healthcare Support</option>
+  <option value="Transportation & Material Moving">Transportation & Material Moving</option>
+  <option value="Architecture & Engineering">Architecture & Engineering</option>
+  <option value="Protective Service">Protective Service</option>
+</select>
+
+<br>
+<br>
+
+
+<label for="income">Choose an income level:</label>
+<select id="income" name="income">
+  <option value="$100000 or More">$100000 or More</option>
+  <option value="$12500 - $24999">$12500 - $24999</option>
+  <option value="$37500 - $49999">$37500 - $49999</option>
+  <option value="$50000 - $62499">$50000 - $62499</option>
+  <option value="$25000 - $37499">$25000 - $37499</option>
+  <option value="$62500 - $74999">$62500 - $74999</option>
+  <option value="$75000 - $87499">$75000 - $87499</option>
+  <option value="Less than $12500">Less than $12500</option>
+  <option value="$87500 - $99999">$87500 - $99999</option>
+</select>
+
+<br>
+<br>
+
+
+<label for="Bar">How frequently do you visit a Bar?</label>
+<select id="Bar" name="Bar">
+  <option value="Atmost 1">Atmost 1</option>
+  <option value="never">never</option>
+  <option value="1 to 3">1 to 3</option>
+  <option value="4 to 8">4 to 8</option>
+  <option value="Greater than 8">Greater than 8</option>
+</select>
+
+
+<br>
+<br>
+
+<label for="CoffeeHouse">How frequently do you visit a CoffeeHouse?</label>
+<select id="CoffeeHouse" name="CoffeeHouse">
+  <option value="1 to 3">1 to 3</option>
+  <option value="Atmost 1">Atmost 1</option>
+  <option value="4 to 8">4 to 8</option>
+  <option value="never">never</option>
+  <option value="Greater than 8">Greater than 8</option>
+</select>
+
+
+<br>
+<br>
+
+<label for="CarryAway">How frequently do you visit a CarryAway?</label>
+<select id="CarryAway" name="CarryAway">
+  <option value="Atmost 1">Atmost 1</option>
+  <option value="1 to 3">1 to 3</option>
+  <option value="4 to 8">4 to 8</option>
+  <option value="Greater than 8">Greater than 8</option>
+  <option value="never">never</option>
+</select>
+
+<br>
+<br>
+
+
+<label for="RestaurantLessThan20">How frequently do you visit a Cheap Restraunt?</label>
+<select id="RestaurantLessThan20" name="RestaurantLessThan20">
+  <option value="1 to 3">1 to 3</option>
+  <option value="4 to 8">4 to 8</option>
+  <option value="Atmost 1">Atmost 1</option>
+  <option value="Greater than 8">Greater than 8</option>
+  <option value="never">never</option>
+</select>
+
+<br>
+<br>
+
+
+<label for="Restaurant20To50">How frequently do you visit a Expensive Restraunt?</label>
+<select id="Restaurant20To50" name="Restaurant20To50">
+  <option value="Atmost 1">Atmost 1</option>
+  <option value="never">never</option>
+  <option value="1 to 3">1 to 3</option>
+  <option value="4 to 8">4 to 8</option>
+  <option value="Greater than 8">Greater than 8</option>
+</select>
+
+<br>
+<br>
+
+
+<label for="direction_opp">Are you driving in opposite direction of the coupon-venue?</label>
+<select id="direction_opp" name="direction_opp">
+  <option value="0">No</option>
+  <option value="1">Yes</option>
+</select>
+
+
+<br>
+<br>
+
+<label for="driving_distance">How far are you currently from the venue?(in driving-distance units)</label>
+<select id="driving_distance" name="driving_distance">
+  <option value="within 15mins">within 15mins</option>
+  <option value="within 5mins">within 5mins</option>
+  <option value="within 25mins">within 25mins</option>
+</select>
+
+
+<br>
+<p align="center">
+  <input type="submit" value="Submit">
+</p>
+
+
+</form>
+
+
+<br>
+<br>
+
+
+{% block content %}
+
+{% endblock %}
+
+<h2 align='center' class="display-4">For Metric-Evaluation, submit the test data and labels in csv format here</h2>
+
+<br>
+<form align="center" action="{{url_for('evaluation')}}" method="POST" enctype="multipart/form-data">
+  <label for="myFile1" class="btn">Select Test data</label>
+  <input type="file" id="myFile1" name="test_file">
+  <label for="myFile2" class="btn">Select Test labels</label>
+  <input type="file" id="myFile2" name="test_label">
+  <br>
+  <input type="submit">
+</form>
+
+<br>
+
+</div>
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,21 @@
+
+
+{% extends 'home.html' %}
+
+{% block content %}
+{% if ans == 1 %}
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Outcome</h4>
+    <p>The customer is likely to accept the coupon</p>
+    <hr>
+  </div>
+{% elif ans == 0 %}
+<div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Outcome</h4>
+    <p>The customer is likely to reject the coupon</p>
+    <hr>
+  </div>
+
+
+  {% endif %}
+  {% endblock %}
