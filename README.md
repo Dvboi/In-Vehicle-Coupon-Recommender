@@ -1,5 +1,5 @@
 # In-Vehicle-Coupon-Recommender
-* Install the libraries requirements.txt
+* Install the libraries using requirements.txt, preferably after creating a separate environment.
 * Run app.py file to run the webapp locally.
 * [Dataset](https://archive.ics.uci.edu/ml/datasets/in-vehicle+coupon+recommendation)  
 
